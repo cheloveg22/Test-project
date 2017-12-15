@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <title>Test</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="b-main-menu">
+                <img class="b-dropdown-menu__logo" src="img/logo.png" alt="logo">
+                <ul>
+                    <li class="b-main-menu__item">
+                        <a class="b-main-menu__link" href="#">Главная</a>
+                    </li>
+                    <li class="b-main-menu__item">
+                        <a class="b-main-menu__link" id="dropdown-open" href="#"
+                        onclick="dropdown()">Тесты</a>
+                        <ul class="b-dropdown-menu">
+                            <li class="b-dropdown-menu__item">
+                                <a class="b-dropdown-menu__link" href="#">География</a>
+                            </li>
+                            <li class="b-dropdown-menu__item">
+                                <a class="b-dropdown-menu__link" href="#">Английский язык</a>
+                            </li>
+                            <li class="b-dropdown-menu__item">
+                                <a class="b-dropdown-menu__link" href="#">Литература</a>
+                            </li>
+                            <li class="b-dropdown-menu__item">
+                                <a class="b-dropdown-menu__link" href="#">История</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="b-main-menu__item">
+                        <a class="b-main-menu__link" href="#">О нас</a>
+                    </li>
+                    <li class="b-main-menu__item">
+                        <a class="b-main-menu__link" href="#">Наша команда</a>
+                    </li>
+                    <li class="b-main-menu__item b-main-menu__item_no-border">
+                        <a class="b-main-menu__link" href="#">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="b-slider-container">
+            <div class="b-slider-container__item b-slider-container__item_fade">
+                <img class="b-slider-container__image" src="img/slide-1.jpg" alt="">
+            </div>
+            <div class="b-slider-container__item b-slider-container__item_fade">
+                <img class="b-slider-container__image" src="img/slide-2.jpg" alt="">
+            </div>
+            <div class="b-slider-container__item b-slider-container__item_fade">
+                <img class="b-slider-container__image" src="img/slide-3.jpg" alt="">
+            </div>
+            <a class="b-slider-container__prev" onclick="plusSlides(-1)">&#10094</a>
+            <a class="b-slider-container__next" onclick="plusSlides(1)">&#10095</a>
+        </div>
+    </header>
+    <main>
+        <div class="b-test-block">
+            <div>
+                <h3 class="b-test-block__title">Заебцовый тест</h3>
+                <p class="b-test-block__time b-test-block__time_hidden" id="time">Затрачено времени: 0 сек</p>
+                <p class="b-test-block__result" id="result"></p>
+
+                <p style="font-size: 38px;font-weight: bold;padding-top: 2px;" id="question"></p>
+
+                <button onclick="check(1)" class="b-test-block__btn b-test-block__btn_hidden"
+                        id="option1"></button>
+
+                <button onclick="check(2)" class="b-test-block__btn b-test-block__btn_hidden"
+                        id="option2"></button>
+
+                <button onclick="check(3)" class="b-test-block__btn b-test-block__btn_hidden"
+                        id="option3"></button>
+
+                <button onclick="check(4)" class="b-test-block__btn b-test-block__btn_hidden"
+                        id="option4"></button>
+            </div>
+            <div>
+                <button id="start" class="b-test-block__btn" onclick="check(0)">Приступить к тесту</button>
+                <!--<script type="text/javascript">-->
+                    <!--var curent_url = document.URL;-->
+                    <!--document.write("<a id='end' style='display: none;' class='oganesyan' href='" + curent_url + "'>Начать сначала</a>");-->
+                <!--</script>-->
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="script/main.js"></script>
+</body>
+</html>

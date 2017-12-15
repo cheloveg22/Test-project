@@ -1,0 +1,133 @@
+@import "fonts",
+        "animations";
+
+ul,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "RobotoRegular", serif;
+  box-sizing: border-box;
+}
+
+.b-main-menu {
+  font-size: 0;
+  list-style: none;
+  text-align: center;
+  padding: 25px 0;
+}
+
+.b-main-menu__item {
+  display: inline-block;
+  font-size: 18px;
+  padding: 5px 10px;
+  position: relative;
+  border-right: 1px solid #b8b8b8;
+}
+
+.b-main-menu__item_no-border {
+  border-right: none;
+}
+
+.b-main-menu__link,
+.b-dropdown-menu__link {
+  text-decoration: none;
+  color: #000;
+  font-family: "RobotoLight", serif;
+}
+
+.b-main-menu__link {
+  padding: 15px 0;
+  //border-top: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  transition: .3s ease;
+
+  &:hover {
+    //border-top: 4px solid #b8b8b8;
+    border-bottom: 4px solid #e0e0e0;
+    padding: 4px 0;
+  }
+}
+
+.b-dropdown-menu {
+  display: none;
+  list-style: none;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  text-align: left;
+
+  &.b-dropdown-menu_visible {
+    display: block;
+    z-index: 1;
+    background-color: white;
+  }
+}
+
+.b-dropdown-menu__logo {
+  width: 100px;
+  padding-bottom: 25px;
+}
+
+.b-dropdown-menu__item {
+  padding: 5px;
+
+  &:hover {
+    background-color: #b8b8b8;
+  }
+}
+
+.b-slider-container {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.b-slider-container__item_fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.b-slider-container__image {
+  max-width: 100%;
+}
+
+.b-slider-container__prev,
+.b-slider-container__next {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  color: #e0e0e0;
+  transition: color .2s ease;
+
+  &:hover {
+    color: #b8b8b8;
+  }
+}
+
+.b-slider-container__prev {
+  left: -30px;
+}
+
+.b-slider-container__next {
+  right: -30px;
+}
+
+.b-test-block {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.b-test-block__title {
+
+}
+
+.b-test-block__btn_hidden {
+  display: none;
+}
