@@ -12,6 +12,7 @@
     <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     <title>Test</title>
+    <link rel="stylesheet" href="style/fontello.css">
     <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
@@ -28,10 +29,12 @@
                         onclick="dropdown()">Тесты</a>
                         <ul class="b-dropdown-menu">
                             <li class="b-dropdown-menu__item">
-                                <a class="b-dropdown-menu__link" href="#">География</a>
+                                <a class="b-dropdown-menu__link"
+                                   onclick="changeTest(1)" href="#test-block">География</a>
                             </li>
                             <li class="b-dropdown-menu__item">
-                                <a class="b-dropdown-menu__link" href="#">Английский язык</a>
+                                <a class="b-dropdown-menu__link"
+                                   onclick="changeTest(3)" href="#">Английский язык</a>
                             </li>
                             <li class="b-dropdown-menu__item">
                                 <a class="b-dropdown-menu__link" href="#">Литература</a>
@@ -63,12 +66,19 @@
             <div class="b-slider-container__item b-slider-container__item_fade">
                 <img class="b-slider-container__image" src="img/slide-3.jpg" alt="">
             </div>
-            <a class="b-slider-container__prev" onclick="plusSlides(-1)">&#10094</a>
-            <a class="b-slider-container__next" onclick="plusSlides(1)">&#10095</a>
+            <div class="b-slider-container__prev" onclick="plusSlides(-1)">
+                <i class="icon-left-open"></i>
+            </div>
+            <div class="b-slider-container__next" onclick="plusSlides(1)">
+                <i class="icon-right-open"></i>
+            </div>
         </div>
     </header>
     <main>
-        <div class="b-test-block">
+        <div class="b-test-block" id="test-block">
+            <!--<button class="test-1">Test geography</button>-->
+            <!--<button class="test-2" onclick="changeTest(2)">Test main</button>-->
+            <!--<button class="test-3">Test English</button>-->
             <div>
                 <h3 class="b-test-block__title">Заебцовый тест</h3>
                 <p class="b-test-block__time b-test-block__time_hidden" id="time">Затрачено времени: 0 сек</p>
@@ -90,16 +100,26 @@
             </div>
             <div>
                 <button id="start" class="b-test-block__btn" onclick="check(0)">Приступить к тесту</button>
-                <!--<script type="text/javascript">-->
-                    <!--var curent_url = document.URL;-->
-                    <!--document.write("<a id='end' style='display: none;' class='oganesyan' href='" + curent_url + "'>Начать сначала</a>");-->
-                <!--</script>-->
             </div>
         </div>
     </main>
     <footer>
-
+        <div class="b-map">
+            <div id="map"></div>
+            <div class="b-contacts">
+                <div class="b-contacts__address"><i class="icon-location"></i>10955 Север-Вулф роад, Купертино, США</div>
+                <div class="b-contacts__tel"><i class="icon-phone"></i>+1 408-863-1276</div>
+                <div class="b-contacts__mail"><i class="icon-mail"></i>supertests@google.com</div>
+                <div class="b-contacts__socials">
+                    <i class="icon-facebook"></i>
+                    <i class="icon-twitter"></i>
+                    <i class="icon-instagram-filled"></i>
+                </div>
+            </div>
+        </div>
     </footer>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCrJReX_mwvBt_ChmG5P3g31j5K7suhK0&callback=initMap"
+            type="text/javascript"></script>
     <script src="script/main.js"></script>
 </body>
 </html>

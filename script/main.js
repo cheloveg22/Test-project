@@ -35,7 +35,25 @@ function dropdown() {
 }
 
 /*~~~ Training test ~~~*/
-var data_array = [
+var english_array = [
+    ["Are you ___ at the moon?", "look", "looks", "looking", "looked", 3],
+    ["We ___ football next Sunday.", "will play", "playing", "plays", "played", 1],
+    ["I want you to ___ here with me.", "staying", "stay", "stayed", "stays", 2],
+    ["Where ___ you from?", "do", "are", "is", "am", 2],
+    ["Give me ___ phone.", "a", "the", "an", "-", 1],
+    ["The perfect end ___ a long day.", "in", "at", "into", "for", 4]
+];
+
+var geography_array = [
+  ["Где зародилась география как наука?", "Индия", "Китай", "Греция", "Германия", 3],
+  ["Ближайшая к солнцу планета?", "Меркурий", "Марс", "Земля", "Планета обезьян", 1],
+  ["Прибор, определяющий направление ветра?", "Компас", "Суппорт", "Крюгер", "Флюгер", 4],
+  ["Течение какой реки направлено не к экватору, а от него?", "Амазонка", "Нил", "Южный буг", "Волга", 2],
+  ["Длина экватора?", "40 000км", "30 000км", "50 000км", "100 000км", 1],
+  ["Сколько штатов в США?", "48", "38", "52", "50", 4]
+];
+
+var main_test = [
     ["Сколько сантиметров в метре?","10","1024","100","1000",3],
     ["Перевод слова: Hello","Как дела?","Привет","Ты","Дом",2],
     ["Перевод слова: Dog","Собака","Кошка","Дерево","Сосиска",1],
@@ -44,7 +62,9 @@ var data_array = [
     ["Перевод слова: Wall","Стена","Дом","Башня","Война",1]
 ];
 
-var plus = 0; //Количество правильных лтветов
+var data_array = main_test;
+
+var plus = 0; //Количество правильных ответов
 var time = 0;
 var cur_answer = 0; //Индекс массива вопроса
 var count_answer = data_array.length;
@@ -54,21 +74,30 @@ function sec() {
     document.getElementById('time').innerHTML='Затрачено времени: ' + time + ' сек';
 }
 
+function changeTest(num){
+    var num = num;
+    var dropdown = document.querySelector(".b-dropdown-menu");
+    dropdown.classList.remove("b-dropdown-menu_visible");
+
+    if (num == 1) {
+        data_array = geography_array;
+    } else if (num == 3) {
+        data_array = english_array;
+    } else {
+        data_array = main_test;
+    }
+}
+
 function check(num){
 
     if(num == 0){
-
-        // document.getElementById('option1').style.display='block';
-        // document.getElementById('option2').style.display='block';
-        // document.getElementById('option3').style.display='block';
-        // document.getElementById('option4').style.display='block';
-        // document.getElementById('question').style.display='block';
 
         document.getElementById('option1').classList.remove("b-test-block__btn_hidden");
         document.getElementById('option2').classList.remove("b-test-block__btn_hidden");
         document.getElementById('option3').classList.remove("b-test-block__btn_hidden");
         document.getElementById('option4').classList.remove("b-test-block__btn_hidden");
         document.getElementById('question').classList.remove("b-test-block__btn_hidden");
+        document.getElementById('time').classList.remove("b-test-block__time_hidden");
 
         document.getElementById('option1').innerHTML=data_array[cur_answer][1];
         document.getElementById('option2').innerHTML=data_array[cur_answer][2];
@@ -77,7 +106,6 @@ function check(num){
         document.getElementById('question').innerHTML=data_array[cur_answer][0];
 
         document.getElementById('start').style.display='none';
-        // document.getElementById('end').style.display='inline';
 
         var intervalID = setInterval(sec, 1000);
 
@@ -107,13 +135,6 @@ function check(num){
             document.getElementById('option3').classList.add("b-test-block__btn_hidden");
             document.getElementById('option4').classList.add("b-test-block__btn_hidden");
             document.getElementById('question').classList.add("b-test-block__btn_hidden");
-            // document.getElementById('end').classList.add("b-test-block__btn_hidden");
-            // document.getElementById('option1').style.display='none';
-            // document.getElementById('option2').style.display='none';
-            // document.getElementById('option3').style.display='none';
-            // document.getElementById('option4').style.display='none';
-            // document.getElementById('question').style.display='none';
-            // document.getElementById('end').style.display='inline';
 
             var percent =  Math.round(plus/count_answer*100);
             var res = 'Плохо!';
@@ -123,4 +144,20 @@ function check(num){
             document.getElementById('result').innerHTML='Правильных ответов: ' + plus + ' из ' + count_answer + ' (' + percent + '%)<br>' + res;
         }
     }
+}
+
+
+/*~~~ Map init ~~~*/
+
+function initMap() {
+    var fullScreenCenter = {lat: 37.3350669, lng: -122.1003824};
+    var uluru = {lat: 37.3350669, lng: -122.0091726};
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: fullScreenCenter
+    });
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });
 }
