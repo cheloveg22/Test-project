@@ -1,3 +1,6 @@
+checkImageSize();
+
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -53,6 +56,15 @@ var geography_array = [
   ["Сколько штатов в США?", "48", "38", "52", "50", 4]
 ];
 
+var literature_array = [
+  ["Кто из них персонаж отрицательный?", "Фродо", "Саурон", "Леголас", "Гендальф", 2],
+  ["Имя сыщика Фандорина из романов Бориса Акунина", "Адольф Бенедиктович", "Аркадий Петрович", "Эдуард Максимович", "Эраст Петрович", 4],
+  ["Кто убил А.С. Пушкина?", "Дорн", "Барских", "Дантес", "Монатик", 3],
+  ["Через сколько лет возвращается Она в романе С. Кинга?", "9", "12", "27", "32", 3],
+  ["О какой эпохе идет речь в романе 'Ярмарка тщеславия?'", "Наполеоновских войн", "Палеолита", "Научных открытий", "Дворцовых переворотов", 1],
+  ["Автор повести Князь Серебряный", "А.К. Толстой", "М.Ю. Лермонтов", "Л.Н. Толстой", "В.О. Пелевин", 1]
+];
+
 var main_test = [
     ["Сколько сантиметров в метре?","10","1024","100","1000",3],
     ["Перевод слова: Hello","Как дела?","Привет","Ты","Дом",2],
@@ -71,16 +83,28 @@ var count_answer = data_array.length;
 
 function sec() {
     time++;
-    document.getElementById('time').innerHTML='Затрачено времени: ' + time + ' сек';
+    // document.getElementById('time').innerHTML='Затрачено времени: ' + time + ' сек';
 }
 
 function changeTest(num){
     var num = num;
-    var dropdown = document.querySelector(".b-dropdown-menu");
-    dropdown.classList.remove("b-dropdown-menu_visible");
+    var variants = document.getElementsByClassName("b-test-themes__item");
+    for(var i = 0; i < variants.length; i++) {
+        if (num == i + 1) {
+            variants[i].classList.add("b-test-themes__item_active");
+            console.log(variants[i]);
+        } else {
+            variants[i].classList.remove("b-test-themes__item_active");
+        }
+    }
+    // var dropdown = document.querySelector(".b-dropdown-menu");
+    // dropdown.classList.remove("b-dropdown-menu_visible");
+    // console.log(variants);
 
     if (num == 1) {
         data_array = geography_array;
+    } else if (num == 2) {
+        data_array = literature_array;
     } else if (num == 3) {
         data_array = english_array;
     } else {
@@ -91,6 +115,11 @@ function changeTest(num){
 function check(num){
 
     if(num == 0){
+        var variants = document.getElementsByClassName("b-test-themes__item");
+        // variants[0].removeAttribute('onclick');
+        for(var i = 0; i < variants.length; i++) {
+            variants[i].removeAttribute('onclick');
+        }
 
         document.getElementById('option1').classList.remove("b-test-block__btn_hidden");
         document.getElementById('option2').classList.remove("b-test-block__btn_hidden");
@@ -98,6 +127,7 @@ function check(num){
         document.getElementById('option4').classList.remove("b-test-block__btn_hidden");
         document.getElementById('question').classList.remove("b-test-block__btn_hidden");
         document.getElementById('time').classList.remove("b-test-block__time_hidden");
+        document.getElementById('restart').classList.add("b-test-block__restart-btn_hidden");
 
         document.getElementById('option1').innerHTML=data_array[cur_answer][1];
         document.getElementById('option2').innerHTML=data_array[cur_answer][2];
@@ -109,7 +139,7 @@ function check(num){
 
         var intervalID = setInterval(sec, 1000);
 
-    }else{
+    } else {
 
         if( num ==  data_array[cur_answer][5]){
             plus++;
@@ -135,6 +165,7 @@ function check(num){
             document.getElementById('option3').classList.add("b-test-block__btn_hidden");
             document.getElementById('option4').classList.add("b-test-block__btn_hidden");
             document.getElementById('question').classList.add("b-test-block__btn_hidden");
+            document.getElementById('restart').classList.remove("b-test-block__restart-btn_hidden");
 
             var percent =  Math.round(plus/count_answer*100);
             var res = 'Плохо!';
@@ -146,7 +177,24 @@ function check(num){
     }
 }
 
+function reload() {
+    location.reload(true);
+}
 
+/*~~~ Pagination ~~~*/
+function changePage(page) {
+    var numberOfPages = 2;
+    var pageOne = document.getElementById("page-1");
+    var pageTwo = document.getElementById("page-2");
+
+    if(page == 1){
+        pageOne.classList.remove("b-our-team-items__page_hidden");
+        pageTwo.classList.add("b-our-team-items__page_hidden");
+    } else {
+        pageTwo.classList.remove("b-our-team-items__page_hidden");
+        pageOne.classList.add("b-our-team-items__page_hidden");
+    }
+}
 /*~~~ Map init ~~~*/
 
 function initMap() {
@@ -154,10 +202,42 @@ function initMap() {
     var uluru = {lat: 37.3350669, lng: -122.0091726};
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
-        center: fullScreenCenter
+        center: fullScreenCenter,
+        gestureHandling: 'none'
     });
     var marker = new google.maps.Marker({
         position: uluru,
         map: map
     });
+}
+
+
+/*~~~ Our team photos ~~~*/
+function imageSize(obj) {
+    var max = 230;
+    console.log(obj.width);
+    if(obj.width > max) {
+        obj.style.width = '230px';
+    }
+
+
+    // if (h > max || w > max) {
+    //     if (h > max) {
+    //         obj.height = max;
+    //     } else {
+    //         obj.width = max;
+    //     }
+    // } else if (h < max) {
+    //     obj.height = max;
+    //     obj.style.maxWidth = 'none';
+    // }
+}
+
+
+function checkImageSize() {
+    var image = document.querySelectorAll(".image-size");
+    for (var i = 0; i < image.length; i++) {
+        imageSize(image[i]);
+        // console.log(image[i]);
+    }
 }
