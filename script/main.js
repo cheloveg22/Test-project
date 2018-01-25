@@ -182,19 +182,34 @@ function reload() {
 }
 
 /*~~~ Pagination ~~~*/
-function changePage(page) {
-    var numberOfPages = 2;
-    var pageOne = document.getElementById("page-1");
-    var pageTwo = document.getElementById("page-2");
+var container = document.getElementsByClassName("b-our-team-items");
+var items = document.getElementsByClassName("b-our-team-item");
+console.log(items);
+var iterator = items[Symbol.iterator]();
 
-    if(page == 1){
-        pageOne.classList.remove("b-our-team-items__page_hidden");
-        pageTwo.classList.add("b-our-team-items__page_hidden");
-    } else {
-        pageTwo.classList.remove("b-our-team-items__page_hidden");
-        pageOne.classList.add("b-our-team-items__page_hidden");
+function changePage(num) {
+    if(num == 1) {
+        console.log(iterator.next());
+    } else if (num == 2) {
+        // console.log(container);
+        container[0].innerHTML = "";
     }
 }
+
+
+// function changePage(page) {
+//     var numberOfPages = 2;
+//     var pageOne = document.getElementById("page-1");
+//     var pageTwo = document.getElementById("page-2");
+//
+//     if(page == 1){
+//         pageOne.classList.remove("b-our-team-items__page_hidden");
+//         pageTwo.classList.add("b-our-team-items__page_hidden");
+//     } else {
+//         pageTwo.classList.remove("b-our-team-items__page_hidden");
+//         pageOne.classList.add("b-our-team-items__page_hidden");
+//     }
+// }
 /*~~~ Map init ~~~*/
 
 function initMap() {
@@ -216,8 +231,10 @@ function initMap() {
 function imageSize(obj) {
     var max = 230;
     console.log(obj.width);
-    if(obj.width > max) {
+    if(obj.width > max && obj.width <= obj.height) {
         obj.style.width = '230px';
+    } else if(obj.width > obj.height) {
+        obj.style.height = '230px';
     }
 
 
