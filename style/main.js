@@ -141,7 +141,7 @@ body {
   padding: 30px 10px; }
 
 .b-about-us__title,
-.b-our-team__title,
+.b-our-clients__title,
 .b-test-block__title {
   display: inline-block;
   font-family: "RobotoThin", serif;
@@ -221,18 +221,18 @@ body {
 .b-test-block__time_hidden {
   display: none; }
 
-.b-our-team {
+.b-our-clients {
   max-width: 960px;
   margin: 0 auto;
   text-transform: uppercase;
   text-align: center; }
 
-.b-our-team-items {
+.b-our-clients-items {
   display: flex;
   justify-content: space-around;
   padding-top: 30px; }
 
-.b-our-team-item {
+.b-our-clients-item {
   -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
@@ -240,16 +240,16 @@ body {
   text-align: center;
   padding: 15px; }
 
-.b-our-team-item_hidden {
+.b-our-clients-item_hidden {
   display: none; }
 
-.b-our-team-item__image {
+.b-our-clients-item__image {
   border-radius: 150px;
   max-width: 230px;
   max-height: 230px;
   margin: 0 auto;
   overflow: hidden; }
-  .b-our-team-item__image img {
+  .b-our-clients-item__image img {
     min-width: 100%; }
 
 .b-pagination {

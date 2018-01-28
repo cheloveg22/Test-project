@@ -37,6 +37,21 @@ function dropdown() {
     }
 }
 
+function mobileMenuOpen(){
+    var menu = document.getElementById("menu");
+    var body = document.querySelector(".b-body");
+
+    if(!menu.classList.contains("menu-opened")) {
+        menu.classList.add("menu-opened");
+        body.classList.add("no-scroll");
+        console.log(body);
+    } else {
+        menu.classList.remove("menu-opened");
+        body.classList.remove("no-scroll");
+    }
+}
+
+
 /*~~~ Training test ~~~*/
 var english_array = [
     ["Are you ___ at the moon?", "look", "looks", "looking", "looked", 3],
@@ -60,7 +75,7 @@ var literature_array = [
   ["Кто из них персонаж отрицательный?", "Фродо", "Саурон", "Леголас", "Гендальф", 2],
   ["Имя сыщика Фандорина из романов Бориса Акунина", "Адольф Бенедиктович", "Аркадий Петрович", "Эдуард Максимович", "Эраст Петрович", 4],
   ["Кто убил А.С. Пушкина?", "Дорн", "Барских", "Дантес", "Монатик", 3],
-  ["Через сколько лет возвращается Она в романе С. Кинга?", "9", "12", "27", "32", 3],
+  ["Через сколько лет возвращается ОНО в романе С. Кинга?", "9", "12", "27", "32", 3],
   ["О какой эпохе идет речь в романе 'Ярмарка тщеславия?'", "Наполеоновских войн", "Палеолита", "Научных открытий", "Дворцовых переворотов", 1],
   ["Автор повести Князь Серебряный", "А.К. Толстой", "М.Ю. Лермонтов", "Л.Н. Толстой", "В.О. Пелевин", 1]
 ];
@@ -235,6 +250,7 @@ function imageSize(obj) {
         obj.style.width = '230px';
     } else if(obj.width > obj.height) {
         obj.style.height = '230px';
+        obj.style.marginLeft = '-30%';
     }
 
 

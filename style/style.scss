@@ -49,6 +49,19 @@ body {
   }
 }
 
+.b-burger-menu {
+  padding-left: 16px;
+  display: none;
+
+  span {
+    display: block;
+    height: 3px;
+    width: 20px;
+    background-color: #e0e0e0;
+    margin-bottom: 3px;
+  }
+}
+
 .b-dropdown-menu {
   display: none;
   list-style: none;
@@ -62,6 +75,10 @@ body {
     z-index: 1;
     background-color: white;
   }
+}
+
+.icon-cancel-circled {
+  display: none;
 }
 
 .b-dropdown-menu__logo {
@@ -128,7 +145,7 @@ body {
 }
 
 .b-about-us__title,
-.b-our-team__title,
+.b-our-clients__title,
 .b-test-block__title {
   display: inline-block;
   font-family: "RobotoThin", serif;
@@ -232,33 +249,35 @@ body {
 //  display: none;
 //}
 
-.b-our-team {
+
+.b-our-clients {
   max-width: 960px;
   margin: 0 auto;
   text-transform: uppercase;
   text-align: center;
 }
 
-.b-our-team-items {
+.b-our-clients-items {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding-top: 30px;
 }
 
-.b-our-team-item {
-  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.75);
-  -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.75);
-  box-shadow: 0 0 5px 0 rgba(0,0,0,0.75);
+.b-our-clients-item {
+  //-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.75);
+  //-moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.75);
+  //box-shadow: 0 0 5px 0 rgba(0,0,0,0.75);
   display: inline-block;
   text-align: center;
   padding: 15px;
 }
 
-.b-our-team-item_hidden {
+.b-our-clients-item_hidden {
   display: none;
 }
 
-.b-our-team-item__image {
+.b-our-clients-item__image {
   border-radius: 150px;
   max-width: 230px;
   max-height: 230px;
@@ -268,6 +287,10 @@ body {
   img {
     min-width: 100%;
   }
+}
+
+.b-our-clients-item__name {
+  padding: 15px 0;
 }
 
 .b-pagination {
@@ -331,5 +354,51 @@ body {
 
   div {
     padding: 5px 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .b-main-menu {
+
+    .b-burger-menu {
+      display: block;
+    }
+
+    ul {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      overflow: hidden;
+      background-color: white;
+      padding: 10px 0;
+      height: 100vh;
+      transform: translateX(-103%);
+      transition: transform .5s;
+
+      li {
+        display: block;
+        padding: 20px;
+      }
+
+      &.menu-opened {
+        transform: none;
+      }
+    }
+  }
+
+  .icon-cancel-circled {
+    display: block;
+    font-size: 24px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
   }
 }

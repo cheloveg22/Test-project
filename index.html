@@ -15,12 +15,17 @@
     <link rel="stylesheet" href="style/fontello.css">
     <link rel="stylesheet" href="style/main.css">
 </head>
-<body>
+<body class="b-body">
     <header>
         <nav>
             <div class="b-main-menu">
                 <img class="b-dropdown-menu__logo" src="img/logo.png" alt="logo">
-                <ul>
+                <div class="b-burger-menu" onclick="mobileMenuOpen()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="menu">
                     <li class="b-main-menu__item">
                         <a class="b-main-menu__link" href="#">Главная</a>
                     </li>
@@ -48,11 +53,12 @@
                         </ul>
                     </li>
                     <li class="b-main-menu__item">
-                        <a class="b-main-menu__link" href="#our-team">Наша команда</a>
+                        <a class="b-main-menu__link" href="#our-clients">Наши клиенты</a>
                     </li>
                     <li class="b-main-menu__item b-main-menu__item_no-border">
                         <a class="b-main-menu__link" href="#map">Контакты</a>
                     </li>
+                    <i class="icon-cancel-circled" onclick="mobileMenuOpen()"></i>
                 </ul>
             </div>
         </nav>
@@ -89,44 +95,62 @@
                 nulla odio odit, perferendis possimus quibusdam rem totam ut veniam voluptatem.
             </div>
         </div>
-        <div class="b-our-team" id="our-team">
-            <div class="b-our-team__title">Наша команда</div>
-            <div class="b-our-team-items">
-                <div class="b-our-team-item">
-                    <div class="b-our-team-item__image">
+        <div class="b-our-clients" id="our-clients">
+            <div class="b-our-clients__title">Наша команда</div>
+            <div class="b-our-clients-items">
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
                         <img class="image-size" src="img/einstein.jpg" alt="Albert Einstein">
                     </div>
-                    <div class="b-our-team-item__name">Albert Einstein</div>
+                    <div class="b-our-clients-item__name">Альберт Энштейн</div>
                 </div>
-                <div class="b-our-team-item">
-                    <div class="b-our-team-item__image">
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
                         <img class="image-size" src="img/stevejobs.jpg" alt="Steve Jobs">
                     </div>
-                    <div class="b-our-team-item__name">Steve Jobs</div>
+                    <div class="b-our-clients-item__name">Стив Джобс</div>
                 </div>
-                <div class="b-our-team-item">
-                    <div class="b-our-team-item__image">
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
                         <img class="image-size" src="img/shnurov.jpg" alt="Shnurov">
                     </div>
-                    <div class="b-our-team-item__name">Шнур</div>
+                    <div class="b-our-clients-item__name">Сергей Шнуров</div>
                 </div>
-                <div class="b-our-team-item b-our-team-item_hidden">
-                    <div class="b-our-team-item__image">
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
                         <img class="image-size" src="img/timati.jpg" alt="Shnurov">
                     </div>
-                    <div class="b-our-team-item__name">Timati</div>
+                    <div class="b-our-clients-item__name">Тимати</div>
                 </div>
-                <div class="b-our-team-item b-our-team-item_hidden">
-                    <div class="b-our-team-item__image">
-                        <img class="image-size" src="img/saddam.jpg" alt="Shnurov">
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
+                        <img class="image-size" src="img/vader.png" alt="Shnurov">
                     </div>
-                    <div class="b-our-team-item__name">Saddam</div>
+                    <div class="b-our-clients-item__name">Дарт Вейдер</div>
                 </div>
-                <div class="b-our-team-item b-our-team-item_hidden">
-                    <div class="b-our-team-item__image">
-                        <img class="image-size" src="img/grey.jpg" alt="Shnurov">
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
+                        <img class="image-size" src="img/che.jpg" alt="Shnurov">
                     </div>
-                    <div class="b-our-team-item__name">Sasha</div>
+                    <div class="b-our-clients-item__name">Че Гевара</div>
+                </div>
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
+                        <img class="image-size" src="img/martin.jpg" alt="Shnurov">
+                    </div>
+                    <div class="b-our-clients-item__name">Джордж Мартин</div>
+                </div>
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
+                        <img class="image-size" src="img/palaev.JPG" alt="Shnurov">
+                    </div>
+                    <div class="b-our-clients-item__name">Андрей Палаев</div>
+                </div>
+                <div class="b-our-clients-item">
+                    <div class="b-our-clients-item__image">
+                        <img class="image-size" src="img/house.jpg" alt="Shnurov">
+                    </div>
+                    <div class="b-our-clients-item__name">Доктор Хаус</div>
                 </div>
             </div>
             <div class="b-pagination">
