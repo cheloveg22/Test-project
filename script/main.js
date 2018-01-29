@@ -230,6 +230,9 @@ function changePage(num) {
 function initMap() {
     var fullScreenCenter = {lat: 37.3350669, lng: -122.1003824};
     var uluru = {lat: 37.3350669, lng: -122.0091726};
+    if (window.innerWidth < 500) {
+        fullScreenCenter = uluru;
+    }
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: fullScreenCenter,
@@ -239,10 +242,11 @@ function initMap() {
         position: uluru,
         map: map
     });
+    console.log(window.innerWidth);
 }
 
 
-/*~~~ Our team photos ~~~*/
+/*~~~ Our clients photos ~~~*/
 function imageSize(obj) {
     var max = 230;
     console.log(obj.width);
