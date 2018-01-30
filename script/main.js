@@ -1,5 +1,7 @@
-checkImageSize();
-
+// checkImageSize();
+window.onload = function () {
+    run(1);
+};
 
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -112,9 +114,6 @@ function changeTest(num){
             variants[i].classList.remove("b-test-themes__item_active");
         }
     }
-    // var dropdown = document.querySelector(".b-dropdown-menu");
-    // dropdown.classList.remove("b-dropdown-menu_visible");
-    // console.log(variants);
 
     if (num == 1) {
         data_array = geography_array;
@@ -196,35 +195,7 @@ function reload() {
     location.reload(true);
 }
 
-/*~~~ Pagination ~~~*/
-var container = document.getElementsByClassName("b-our-team-items");
-var items = document.getElementsByClassName("b-our-team-item");
-console.log(items);
-var iterator = items[Symbol.iterator]();
 
-function changePage(num) {
-    if(num == 1) {
-        console.log(iterator.next());
-    } else if (num == 2) {
-        // console.log(container);
-        container[0].innerHTML = "";
-    }
-}
-
-
-// function changePage(page) {
-//     var numberOfPages = 2;
-//     var pageOne = document.getElementById("page-1");
-//     var pageTwo = document.getElementById("page-2");
-//
-//     if(page == 1){
-//         pageOne.classList.remove("b-our-team-items__page_hidden");
-//         pageTwo.classList.add("b-our-team-items__page_hidden");
-//     } else {
-//         pageTwo.classList.remove("b-our-team-items__page_hidden");
-//         pageOne.classList.add("b-our-team-items__page_hidden");
-//     }
-// }
 /*~~~ Map init ~~~*/
 
 function initMap() {
@@ -246,35 +217,179 @@ function initMap() {
 }
 
 
+// /*~~~ Our clients photos ~~~*/
+// function imageSize(obj) {
+//     var max = 230;
+//     // console.log(obj.width);
+//     if(obj.width > max && obj.width <= obj.height) {
+//         obj.style.width = '230px';
+//     } else if(obj.width > obj.height) {
+//         obj.style.height = '230px';
+//         obj.style.marginLeft = '-30%';
+//     }
+// }
+//
+//
+// function checkImageSize() {
+//     var image = document.querySelectorAll(".image-size");
+//     for (var i = 0; i < image.length; i++) {
+//         imageSize(image[i]);
+//         console.log(image[i]);
+//     }
+// }
+
+
+
+var Iterator = function(items) {
+    this.index = 0;
+    this.items = items;
+};
+Iterator.prototype = {
+    first: function() {
+        this.reset();
+        return this.next();
+    },
+    next: function() {
+        return this.items[this.index++];
+    },
+    hasNext: function() {
+        return this.index <= this.items.length;
+    },
+    reset: function() {
+        this.index = 0;
+    },
+    each: function(callback) {
+        for (var item = this.first(); this.hasNext(); item = this.next()) {
+            callback(item);
+        }
+    }
+};
+
+function run(num) {
+    // var items = ['one', 2, 3, "четыре", 5];
+    var container = document.querySelector(".b-our-clients-items");
+    var items = [
+        {
+            'src': 'img/einstein.jpg',
+            'name': 'Альберт Энштейн'
+        },
+        {
+            'src': 'img/stevejobs.jpg',
+            'name': 'Стив Джобс'
+        },
+        {
+            'src': 'img/shnurov.jpg',
+            'name': 'Сергей Шнуров'
+        },
+        {
+            'src': 'img/timati.jpg',
+            'name': 'тимати'
+        },
+        {
+            'src': 'img/vader.png',
+            'name': 'vader'
+        },
+        {
+            'src': 'img/che.jpg',
+            'name': 'Че Гевара'
+        },
+        {
+            'src': 'img/martin.jpg',
+            'name': 'Джордж Мартин'
+        },
+        {
+            'src': 'img/palaev.jpg',
+            'name': 'Андрей Палаев'
+        },
+        {
+            'src': 'img/house.jpg',
+            'name': 'Доктор Хаус'
+        }
+
+    ];
+
+    var iter = new Iterator(items);
+    var paginationBtn = document.querySelectorAll(".b-pagination__item");
+
+    if (num == 1) {
+        container.innerHTML ="";
+        while (iter.hasNext() && iter.index < 6) {
+            var item = iter.next();
+            createElement(item.src, item.name);
+            // console.log(item.src);
+        }
+    } else if (num == 2) {
+        container.innerHTML ="";
+        while (iter.hasNext()) {
+            var item = iter.next();
+
+            if(iter.index > 6) {
+                createElement(item.src, item.name);
+            }
+
+        }
+    }
+}
+
+function createElement(src, title) {
+    var container = document.querySelector(".b-our-clients-items");
+    var item = document.createElement('div');
+    var div = document.createElement('div');
+    var img = document.createElement('img');
+    var name = document.createElement('div');
+    img.setAttribute('src', src);
+    img.className = 'image-size';
+    item.className = 'b-our-clients-item';
+    div.className = 'b-our-clients-item__image';
+    name.className = 'b-our-clients-item__name';
+    name.innerHTML = title;
+    // console.log(item.className);
+    // container.innerHTML = "";
+    div.appendChild(img);
+    item.appendChild(div);
+    item.appendChild(name);
+    container.appendChild(item);
+
+    function imageSize(obj) {
+        var max = 230;
+        console.log(obj.height);
+        if(obj.width > max && obj.width <= obj.height) {
+            obj.style.width = '230px';
+        } else if(obj.width > obj.height) {
+            obj.style.height = '230px';
+            obj.style.marginLeft = '-30%';
+        }
+    }
+
+
+    function checkImageSize() {
+        var image = document.querySelectorAll(".image-size");
+        for (var i = 0; i < image.length; i++) {
+            imageSize(image[i]);
+            console.log(image[i]);
+        }
+    }
+
+    checkImageSize();
+}
+
 /*~~~ Our clients photos ~~~*/
-function imageSize(obj) {
-    var max = 230;
-    console.log(obj.width);
-    if(obj.width > max && obj.width <= obj.height) {
-        obj.style.width = '230px';
-    } else if(obj.width > obj.height) {
-        obj.style.height = '230px';
-        obj.style.marginLeft = '-30%';
-    }
-
-
-    // if (h > max || w > max) {
-    //     if (h > max) {
-    //         obj.height = max;
-    //     } else {
-    //         obj.width = max;
-    //     }
-    // } else if (h < max) {
-    //     obj.height = max;
-    //     obj.style.maxWidth = 'none';
-    // }
-}
-
-
-function checkImageSize() {
-    var image = document.querySelectorAll(".image-size");
-    for (var i = 0; i < image.length; i++) {
-        imageSize(image[i]);
-        // console.log(image[i]);
-    }
-}
+// function imageSize(obj) {
+//     var max = 230;
+//     console.log(obj.width);
+//     if(obj.width > max && obj.width <= obj.height) {
+//         obj.style.width = '230px';
+//     } else if(obj.width > obj.height) {
+//         obj.style.height = '230px';
+//         obj.style.marginLeft = '-30%';
+//     }
+// }
+//
+//
+// function checkImageSize() {
+//     var image = document.querySelectorAll(".image-size");
+//     for (var i = 0; i < image.length; i++) {
+//         imageSize(image[i]);
+//         console.log(image[i]);
+//     }
+// }
