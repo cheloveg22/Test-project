@@ -20,7 +20,7 @@ gulp.task('script', function(){
         .pipe(gulp.dest('./script/'));
 });
 
-gulp.task('cssmin', function(){
+gulp.task('cssmin', ['sass'], function(){
     gulp.src('./style/style.css')
         .pipe(cssmin())
         .pipe((rename({suffix: '.min'})))
