@@ -337,59 +337,36 @@ function createElement(src, title) {
     var div = document.createElement('div');
     var img = document.createElement('img');
     var name = document.createElement('div');
+    img.onload = checkImageSize;
     img.setAttribute('src', src);
     img.className = 'image-size';
     item.className = 'b-our-clients-item';
     div.className = 'b-our-clients-item__image';
     name.className = 'b-our-clients-item__name';
     name.innerHTML = title;
-    // console.log(item.className);
-    // container.innerHTML = "";
     div.appendChild(img);
     item.appendChild(div);
     item.appendChild(name);
     container.appendChild(item);
-
-    function imageSize(obj) {
-        var max = 230;
-        console.log(obj.height);
-        if(obj.width > max && obj.width <= obj.height) {
-            obj.style.width = '230px';
-        } else if(obj.width > obj.height) {
-            obj.style.height = '230px';
-            obj.style.marginLeft = '-30%';
-        }
-    }
-
-
-    function checkImageSize() {
-        var image = document.querySelectorAll(".image-size");
-        for (var i = 0; i < image.length; i++) {
-            imageSize(image[i]);
-            console.log(image[i]);
-        }
-    }
-
-    checkImageSize();
 }
 
 /*~~~ Our clients photos ~~~*/
-// function imageSize(obj) {
-//     var max = 230;
-//     console.log(obj.width);
-//     if(obj.width > max && obj.width <= obj.height) {
-//         obj.style.width = '230px';
-//     } else if(obj.width > obj.height) {
-//         obj.style.height = '230px';
-//         obj.style.marginLeft = '-30%';
-//     }
-// }
-//
-//
-// function checkImageSize() {
-//     var image = document.querySelectorAll(".image-size");
-//     for (var i = 0; i < image.length; i++) {
-//         imageSize(image[i]);
-//         console.log(image[i]);
-//     }
-// }
+function imageSize(obj) {
+    var max = 230;
+    console.log(obj.width);
+    if(obj.width > max && obj.width <= obj.height) {
+        obj.style.width = '230px';
+    } else if(obj.width > obj.height) {
+        obj.style.height = '230px';
+        obj.style.marginLeft = '-30%';
+    }
+}
+
+
+function checkImageSize() {
+    var image = document.querySelectorAll(".image-size");
+    for (var i = 0; i < image.length; i++) {
+        imageSize(image[i]);
+        console.log(image[i]);
+    }
+}
